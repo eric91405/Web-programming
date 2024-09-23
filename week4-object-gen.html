@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>객체생성</title>
+    <script>
+
+    function getStudentcount() {return this.nStudent;}
+    function register() {return this.nStudent += 1;}
+    function unregister() {return this.nStudent -= 1;}
+
+    let test = new Object();
+    test.korname="웹프로그래밍";
+    test.engName="Web Programming";
+    test.classCode="V024003";
+    test.nStudent=0;
+    test.getStudentcount=getStudentcount;
+    test.register=register;
+    test.unregister=unregister;
+
+    let test2={
+        korname: "클라우드컴퓨팅",
+        engName:"CloudComputing",
+        nStudent: 0,
+
+        register: function() {return this.nStudent +=1;},
+        unregister: function() {return this.nStudent -=1;},
+        getStudentcount: function() {return this.nStudent;}
+
+    }
+    </script>
+    <script>
+        function test3(korname, nStudent){
+            this.korname=korname;
+            this.nStudent=nStudent;
+
+            this.register = function() {return this.nStudent +=1;}
+            this.unregister = function() {return this.nStudent -=1;}
+            this.getStudentcount=function() {return this.nStudent;}
+        }
+
+    </script>
+
+</head>
+<body>
+    <h3>1. 직접 객체 만들기</h3>
+    <script>
+    document.write("교과목 이름 = "+test.korname+"<br>");
+    document.write("등록 학생 수 = " + test.getStudentcount()+"<br>");
+    document.write("after register, 등록 학생 수 = " + test.register()+"<br>");
+    </script>
+    <hr>
+    <script>
+    document.write("교과목 이름 = "+test2.korname+"<br>");
+    document.write("등록 학생 수 = " + test2.getStudentcount()+"<br>");
+    document.write("after register, 등록 학생 수 = " + test2.register()+"<br>");
+    </script>
+    <hr>
+
+    <script>
+    let Test3 = new test3("프로그래밍언어론",0);
+
+    document.write("교과목 이름" + Test3.korname+"<br>");
+    document.write("등록 학생 수 = "+ Test3.nStudent+"<br>")
+    document.write("after register, 등록 학생 수 = "+ Test3.register());
+
+    </script>
+</body>
+</html>
