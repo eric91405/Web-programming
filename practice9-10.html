@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>계산기 만들기</title>
+</head>
+<body>
+    <h1>계산기 만들기</h1>
+    <input type="text" id="display" value="0" readonly><br>
+
+    <!-- 버튼 배치 -->
+    <button onclick="backspace()">BACK</button>
+    <button onclick="clearDisplay()">CE</button>
+    <button onclick="clearAll()">C</button>
+    <button onclick="calculate()">=</button><br>
+
+    <button onclick="appendNumber('7')">7</button>
+    <button onclick="appendNumber('8')">8</button>
+    <button onclick="appendNumber('9')">9</button>
+    <button onclick="appendOperator('/')">/</button><br>
+
+    <button onclick="appendNumber('4')">4</button>
+    <button onclick="appendNumber('5')">5</button>
+    <button onclick="appendNumber('6')">6</button>
+    <button onclick="appendOperator('*')">*</button><br>
+
+    <button onclick="appendNumber('1')">1</button>
+    <button onclick="appendNumber('2')">2</button>
+    <button onclick="appendNumber('3')">3</button>
+    <button onclick="appendOperator('-')">-</button><br>
+
+    <button onclick="appendNumber('0')">0</button>
+    <button onclick="appendOperator('+')">+</button>
+    <button>NONE</button>
+    <button>NONE</button><br>
+
+    <script>
+        let display = document.getElementById("display");
+
+        function appendNumber(number) {
+            if (display.value === "0") {
+                display.value = number;
+            } else {
+                display.value += number;
+            }
+        }
+
+        function appendOperator(operator) {
+            display.value += operator;
+        }
+
+        function clearDisplay() {
+            display.value = "0";
+        }
+
+        function clearAll() {
+            display.value = "0";
+        }
+
+        function backspace() {
+            display.value = display.value.slice(0, -1);
+            if (display.value === "") {
+                display.value = "0";
+            }
+        }
+
+        function calculate() {
+            try {
+                display.value = eval(display.value);
+            } catch {
+                display.value = "Error";
+            }
+        }
+    </script>
+</body>
+</html>
