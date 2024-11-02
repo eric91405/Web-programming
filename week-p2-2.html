@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>일기 보기</title>
+    <style>
+        #diaryTable {
+            background-color: aquamarine;
+            width: 100%;
+        }
+        th, td{
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>일기 보기</h1>
+    <hr>
+    
+    <table>
+        <thead></thead>
+        <tbody id="diaryTable"></tbody>
+    </table>
+
+    <script>
+        let diaryTable = document.getElementById("diaryTable");
+
+        for (let i = 0; i < sessionStorage.length; i++) {
+            let newRow = document.createElement("tr");
+            let newTd1 = document.createElement("td");
+            newTd1.textContent = i + 1;
+            let newTd2 = document.createElement("td");
+            newTd2.textContent = sessionStorage.key(i);
+            let newTd3 = document.createElement("td");
+            newTd3.textContent = sessionStorage.getItem(sessionStorage.key(i));
+
+            newRow.appendChild(newTd1);
+            newRow.appendChild(newTd2);
+            newRow.appendChild(newTd3);
+
+            diaryTable.appendChild(newRow);
+        }
+    </script>
+</body>
+</html>
